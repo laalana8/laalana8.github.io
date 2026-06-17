@@ -15,38 +15,35 @@
         html, body {
             width: 100%;
             height: 100%;
+            overflow: hidden; /* Убираем прокрутку */
             background: #ffffff;
-            overflow: hidden;
         }
 
-        /* Контейнер занимает весь экран */
+        /* Основной контейнер занимает весь экран */
         .container {
             position: relative;
             width: 100vw;
             height: 100vh;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
 
-        /* Изображение вписывается в экран без обрезки */
+        /* Фото растягивается на весь экран, сохраняя пропорции.
+           При этом оно центрируется, а лишнее обрезается по краям */
         .container img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: contain;  /* Вписываем без обрезки */
+            object-fit: cover;  /* Заполняет весь контейнер, обрезая края */
             object-position: center center;
-            max-width: 100vw;
-            max-height: 100vh;
+            background: #ffffff;
         }
 
-        /* Невидимые кликабельные зоны */
+        /* Невидимые кликабельные зоны – привязаны к картинке через проценты */
         .click-area {
             position: absolute;
             cursor: pointer;
             background: transparent;
-            /* Для отладки (раскомментируйте при необходимости):
+            /* Для отладки можно раскомментировать:
             background: rgba(255,0,0,0.15);
             border: 1px dashed red;
             */
@@ -77,16 +74,26 @@
         }
 
         /*
-           На телефонах изображение вписывается в экран.
-           На широких экранах тоже вписывается, но с белыми полями по бокам
-           (это нормально, так как изображение портретное)
+           Для очень широких экранов (компьютеры) можно ограничить ширину,
+           чтобы изображение не растягивалось слишком сильно.
+           Но для телефонов оно будет занимать 100% экрана по высоте и ширине.
         */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 100vw;
+                max-height: 100vh;
+            }
+            .container img {
+                object-fit: contain; /* На компьютерах показываем целиком без обрезки */
+                background: #ffffff;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Само приглашение (SVG с встроенным изображением) -->
+    <!-- Само приглашение -->
     <img src="test.svg" alt="Свадебное приглашение" />
 
     <!-- Невидимые ссылки -->
