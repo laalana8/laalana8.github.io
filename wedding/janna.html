@@ -15,35 +15,38 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Убираем прокрутку */
             background: #ffffff;
+            overflow: hidden;
         }
 
-        /* Основной контейнер занимает весь экран */
+        /* Контейнер занимает весь экран */
         .container {
             position: relative;
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Фото растягивается на весь экран, сохраняя пропорции.
-           При этом оно центрируется, а лишнее обрезается по краям */
+        /* Изображение вписывается в экран без обрезки */
         .container img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;  /* Заполняет весь контейнер, обрезая края */
+            object-fit: contain;  /* Вписываем без обрезки */
             object-position: center center;
-            background: #ffffff;
+            max-width: 100vw;
+            max-height: 100vh;
         }
 
-        /* Невидимые кликабельные зоны – привязаны к картинке через проценты */
+        /* Невидимые кликабельные зоны */
         .click-area {
             position: absolute;
             cursor: pointer;
             background: transparent;
-            /* Для отладки можно раскомментировать:
+            /* Для отладки (раскомментируйте при необходимости):
             background: rgba(255,0,0,0.15);
             border: 1px dashed red;
             */
@@ -74,26 +77,16 @@
         }
 
         /*
-           Для очень широких экранов (компьютеры) можно ограничить ширину,
-           чтобы изображение не растягивалось слишком сильно.
-           Но для телефонов оно будет занимать 100% экрана по высоте и ширине.
+           На телефонах изображение вписывается в экран.
+           На широких экранах тоже вписывается, но с белыми полями по бокам
+           (это нормально, так как изображение портретное)
         */
-        @media (min-width: 768px) {
-            .container {
-                max-width: 100vw;
-                max-height: 100vh;
-            }
-            .container img {
-                object-fit: contain; /* На компьютерах показываем целиком без обрезки */
-                background: #ffffff;
-            }
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Само приглашение -->
+    <!-- Само приглашение (SVG с встроенным изображением) -->
     <img src="test.svg" alt="Свадебное приглашение" />
 
     <!-- Невидимые ссылки -->
