@@ -17,7 +17,6 @@
             background: #ffffff;
         }
 
-        /* Убираем overflow: hidden — теперь можно скроллить */
         .fullscreen {
             position: relative;
             width: 100%;
@@ -25,79 +24,81 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 0; /* отступы сверху и снизу */
+            padding: 20px 0;
         }
 
-        /* 📌 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: фото НЕ на всю ширину, а с отступами */
+        /* 📌 ФОТО — с отступами, но приближенное */
         .fullscreen img {
-            width: 85%;              /* ← меняйте это значение для приближения */
-            max-width: 500px;        /* ← максимальная ширина на больших экранах */
+            width: 90%;              /* на телефоне почти на всю ширину */
+            max-width: 700px;        /* на компьютере ограничиваем, чтобы не расплывалось */
             height: auto;
             display: block;
-            border-radius: 12px;     /* опционально: скругление */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* опционально: тень */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             background: #ffffff;
         }
 
-        /* Для телефонов — можно сделать шире */
+        /* На телефонах — шире */
         @media (max-width: 480px) {
             .fullscreen img {
-                width: 92%;          /* на телефоне почти на всю ширину */
+                width: 95%;
                 max-width: none;
             }
         }
 
-        /* Для больших экранов (компьютеров) — уже */
+        /* На компьютерах — фото крупнее (приближено) */
         @media (min-width: 1024px) {
             .fullscreen img {
-                width: 60%;          /* на компе уже, чтобы не растягивалось */
-                max-width: 600px;
+                width: 75%;          /* ← увеличиваем ширину */
+                max-width: 900px;    /* ← больше максимум */
             }
         }
 
-        /* ----- НЕВИДИМЫЕ КЛИКАБЕЛЬНЫЕ ЗОНЫ ----- */
+        /* ----- КЛИКАБЕЛЬНЫЕ ЗОНЫ (ЦВЕТНЫЕ ДЛЯ ОТЛАДКИ) ----- */
         .click-area {
             position: absolute;
             cursor: pointer;
-            background: transparent;
+            /* ⚠️ ЦВЕТНЫЕ ЗОНЫ ДЛЯ НАСТРОЙКИ — видно где кликать */
+            background: rgba(255, 0, 0, 0.25);
+            border: 2px dashed red;
+            border-radius: 6px;
+            transition: background 0.2s;
         }
 
-        /* Важно: координаты теперь привязаны к контейнеру, а не к экрану */
+        /* При наведении подсвечиваем ярче */
+        .click-area:hover {
+            background: rgba(255, 0, 0, 0.45);
+        }
+
+        /* ---- 1-я кнопка: «Дворец Тракосочетания» ---- */
         .area-1 {
             top: 24%;
             left: 12%;
             width: 52%;
             height: 4%;
-            color: red;
         }
 
+        /* ---- 2-я кнопка: «Свадебный ужин» ---- */
         .area-2 {
             top: 34%;
             left: 11%;
             width: 56%;
             height: 4%;
-            color: red;
         }
 
+        /* ---- 3-я кнопка: Google Форма ---- */
         .area-3 {
             top: 90%;
             left: 8%;
             width: 76%;
             height: 6%;
-            color: red;
         }
 
-        /* Адаптив для телефонов */
+        /* 📱 Телефоны (узкие экраны) */
         @media (max-width: 480px) {
             .area-1 { top: 30%; left: 6%; width: 60%; height: 8%; }
             .area-2 { top: 48%; left: 5%; width: 64%; height: 8%; }
             .area-3 { top: 86%; left: 4%; width: 80%; height: 9%; }
-        }
-
-        @media (min-width: 1024px) {
-            .area-1 { top: 24%; left: 24%; width: 52%; height: 4%; }
-            .area-2 { top: 34%; left: 23%; width: 56%; height: 4%; }
-            .area-3 { top: 90%; left: 20%; width: 60%; height: 6%; }
         }
     </style>
 </head>
