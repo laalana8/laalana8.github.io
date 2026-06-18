@@ -23,19 +23,26 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* 📌 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: растягиваем по ширине */
         .fullscreen img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;  /* фото заполняет экран, обрезая края */
+            height: auto;           /* высота подстраивается */
+            min-height: 100vh;      /* принудительно тянем вниз */
+            object-fit: contain;    /* без обрезки */
             display: block;
             background: #ffffff;
-            /* Дополнительно центрируем изображение */
-            object-position: center center;
+            /* Центрируем по горизонтали */
+            object-position: center top;
         }
 
-        /* ----- НЕВИДИМЫЕ КЛИКАБЕЛЬНЫЕ ЗОНЫ ----- */
+        /* Альтернатива: если хотим строго по ширине, но с возможностью скролла */
+        /* Убираем overflow: hidden у .fullscreen и добавляем overflow-y: auto */
+
         .click-area {
             position: absolute;
             cursor: pointer;
