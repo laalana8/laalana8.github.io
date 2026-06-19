@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Свадьба</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background: #ffffff;
+        }
+
+        .fullscreen {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .fullscreen img {
+            width: 90%;              /* на телефоне почти на всю ширину */
+            max-width: 600px;        /* на компьютере ограничиваем, чтобы не расплывалось */
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            .fullscreen img {
+                width: 95%;
+                max-width: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .fullscreen img {
+                width: 75%;          /* ← увеличиваем ширину */
+                max-width: 900px;    /* ← больше максимум */
+            }
+        }
+
+        .click-area {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .area-1 {
+            top: 42.5%;
+            left: 48.25%;
+            width: 14%;
+            height: 4%;
+        }
+
+        .area-2 {
+            top: 57.5%;
+            left: 48.25%;
+            width: 14%;
+            height: 4%;
+        }
+
+        .area-3 {
+            top: 89%;
+            left: 46.25%;
+            width: 14%;
+            height: 4%;
+        }
+
+        @media (max-width: 480px) {
+            .area-1 { top: 42%; left: 24%; width: 60%; height: 3%; }
+            .area-2 { top: 57%; left: 24%; width: 60%; height: 3%; }
+            .area-3 { top: 88%; left: 17%; width: 60%; height: 3%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="fullscreen">
+    <img src="base_love.png" alt="Свадебное приглашение" />
+
+    <a class="click-area area-1"
+       href="https://yandex.ru/maps/?pt=28.332127,57.812466&z=17"
+       target="_blank"
+       aria-label="Открыть Яндекс.Карты с местом Дворца Бракосочетания"
+    ></a>
+
+    <a class="click-area area-2"
+       href="https://yandex.ru/maps/?pt=28.165140,57.892683&z=17"
+       target="_blank"
+       aria-label="Открыть Яндекс.Карты с местом свадебного ужина"
+    ></a>
+
+    <a class="click-area area-3"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSecFy32B9EVbHZBt0B4f1IuSHl0AVATnXU_nuykJkguIn5iXQ/viewform?usp=pp_url&entry.1192344535=%D0%91%D0%B0%D1%82%D0%B0%D1%88%D0%BA%D0%BE%D0%B2+%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2"
+       target="_blank"
+       aria-label="Открыть Google Форму для подтверждения"
+    ></a>
+</div>
+
+</body>
+</html>
